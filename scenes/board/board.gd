@@ -3,7 +3,10 @@
 class_name Board
 extends TileMapLayer
 
+const NULL_CELL := Vector2i(-1, -1)
+
 static var current_board: Board
+@export var accept_clicks: bool = true
 
 var tiles: Array[Vector2i]
 
@@ -13,11 +16,25 @@ func _ready() -> void:
 	tiles = _get_valid_board_tiles()
 
 
+func _process(_delta: float) -> void:
+	if accept_clicks and Input.is_action_just_pressed("mouse_pressed"):
+		var cell: Vector2i = _get_clicked_cell()
+		if cell != NULL_CELL:
+			print(cell)
+
+
 func _get_valid_board_tiles() -> Array[Vector2i]:
 	var used_tiles: Array[Vector2i] = get_used_cells()
-	for tile in used_tiles:
-		var is_board_tile: bool = get_cell_tile_data(tile).get_custom_data("is_tile")
 
-		if is_board_tile:
-			tiles.append(tile)
-	return used_tiles
+	var valid_tiles: Array[Vector2i]
+	for tile in used_tiles:
+		if get_cell_tile_data(tile).get_custom_data("is_tile"):
+			valid_tiles.append(tile)
+	return valid_tiles
+
+
+func _get_clicked_cell() -> Vector2i:
+	var clicked_cell: Vector2i = local_to_map(get_local_mouse_position())
+	if clicked_cell in tiles:
+		return clicked_cell
+	return NULL_CELL
