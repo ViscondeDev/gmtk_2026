@@ -113,6 +113,7 @@ texture = ExtResource("1_qp2yk")
 2:4/0/terrains_peering_bit/top_left_corner = 0
 2:4/0/terrains_peering_bit/top_side = 0
 2:4/0/terrains_peering_bit/top_right_corner = 0
+3:3/0 = 0
 
 [resource]
 terrain_set_0/mode = 0

@@ -5,6 +5,7 @@ extends Piece
 
 
 func get_valid_tiles(start_position: Vector2i) -> Array[Vector2i]:
+	Board.effects_layer.clear()
 	var possible_moves_unvalidated := [
 		Vector2i(1, 1),
 		Vector2i(1, -1),
@@ -18,4 +19,5 @@ func get_valid_tiles(start_position: Vector2i) -> Array[Vector2i]:
 			axis,
 		)
 	print(valid_moves)
+	Board.effects_layer.highlight_tiles(valid_moves)
 	return valid_moves

@@ -8,6 +8,7 @@ signal cell_clicked(cell: Vector2i)
 const NULL_CELL := Vector2i(-1, -1)
 
 static var current_board: Board
+static var effects_layer: BoardEffects
 @export var accept_clicks: bool = true
 
 var tiles: Array[Vector2i]
