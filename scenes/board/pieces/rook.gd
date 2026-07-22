@@ -3,7 +3,7 @@ class_name Rook
 extends Piece
 
 
-func get_valid_tiles(start_position: Vector2i) -> Array[Vector2i]:
+static func get_valid_tiles(start_position: Vector2i) -> Array[Vector2i]:
 	Board.effects_layer.clear()
 	var possible_moves_unvalidated := [
 		Vector2i(1, 0),
