@@ -3,6 +3,8 @@
 class_name Board
 extends TileMapLayer
 
+signal cell_clicked(cell: Vector2i)
+
 const NULL_CELL := Vector2i(-1, -1)
 
 static var current_board: Board
@@ -20,7 +22,7 @@ func _process(_delta: float) -> void:
 	if accept_clicks and Input.is_action_just_pressed("mouse_pressed"):
 		var cell: Vector2i = _get_clicked_cell()
 		if cell != NULL_CELL:
-			print(cell)
+			cell_clicked.emit(cell)
 
 
 func _get_valid_board_tiles() -> Array[Vector2i]:
