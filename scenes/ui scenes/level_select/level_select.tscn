@@ -7,37 +7,37 @@
 [ext_resource type="Texture2D" uid="uid://byb5y3hofo88b" path="res://assets/Back.png" id="4_ij0sh"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ixgle"]
+content_margin_left = 20.0
+content_margin_top = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
 texture = ExtResource("2_ij0sh")
 texture_margin_left = 5.0
 texture_margin_top = 5.0
 texture_margin_right = 5.0
 texture_margin_bottom = 5.0
-expand_margin_left = 10.0
-expand_margin_top = 10.0
-expand_margin_right = 10.0
-expand_margin_bottom = 10.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_a37fb"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
 texture = ExtResource("2_ij0sh")
 texture_margin_left = 5.0
 texture_margin_top = 5.0
 texture_margin_right = 5.0
 texture_margin_bottom = 5.0
-expand_margin_left = 10.0
-expand_margin_top = 10.0
-expand_margin_right = 10.0
-expand_margin_bottom = 10.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7227p"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
 texture = ExtResource("3_ixgle")
 texture_margin_left = 5.0
 texture_margin_top = 5.0
 texture_margin_right = 5.0
 texture_margin_bottom = 5.0
-expand_margin_left = 10.0
-expand_margin_top = 10.0
-expand_margin_right = 10.0
-expand_margin_bottom = 10.0
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ixgle"]
 load_path = "res://.godot/imported/Card-layout.png-97ced0726fd48f03e63df396eacfef7d.ctex"
@@ -102,8 +102,8 @@ offset_right = 85.0802
 offset_bottom = 40.130035
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/h_separation = 35
-theme_override_constants/v_separation = 35
+theme_override_constants/h_separation = 12
+theme_override_constants/v_separation = 12
 columns = 4
 
 [node name="Level1" type="Button" parent="GridContainer" unique_id=85703862]
@@ -225,4 +225,12 @@ grow_vertical = 2
 scale = Vector2(0.57, 0.57)
 texture = ExtResource("4_ij0sh")
 
+[connection signal="pressed" from="GridContainer/Level1" to="." method="_on_level_select" binds= [1]]
+[connection signal="pressed" from="GridContainer/Level2" to="." method="_on_level_select" binds= [2]]
+[connection signal="pressed" from="GridContainer/Level3" to="." method="_on_level_select" binds= [3]]
+[connection signal="pressed" from="GridContainer/Level4" to="." method="_on_level_select" binds= [4]]
+[connection signal="pressed" from="GridContainer/Level5" to="." method="_on_level_select" binds= [5]]
+[connection signal="pressed" from="GridContainer/Level6" to="." method="_on_level_select" binds= [6]]
+[connection signal="pressed" from="GridContainer/Level7" to="." method="_on_level_select" binds= [7]]
+[connection signal="pressed" from="GridContainer/Level8" to="." method="_on_level_select" binds= [8]]
 [connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
