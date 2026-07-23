@@ -2,7 +2,6 @@
 class_name Pawn
 extends Piece
 
-var is_selection: bool #PLACEHOLDER
 var pieces := {
 	"rook": Rook,
 	"bishop": Bishop,
@@ -23,5 +22,20 @@ func _process(_delta: float) -> void:
 			if Input.is_action_just_pressed(piece):
 				possible_moves = pieces[piece].get_valid_tiles(current_board_position)
 				TurnManager.current.current_state = TurnManager.State.MOVEMENT
-	elif TurnManager.current.current_state == TurnManager.State.MOVEMENT:
-		pass
+
+
+func watch_game_state(state: TurnManager.State) -> void:
+	match state:
+		TurnManager.State.MOVEMENT:
+			Board.current_board.cell_clicked.connect(recieve_click)
+		TurnManager.State.SELECTION:
+			Board.current_board.cell_clicked.disconnect(recieve_click)
+
+
+func recieve_click(tile: Vector2i) -> void:
+	if tile in possible_moves:
+		position = Board.current_board.map_to_local(tile)
+		current_board_position = tile
+		TurnManager.current.current_state = TurnManager.State.SELECTION
+	else:
+		print("ignore")
