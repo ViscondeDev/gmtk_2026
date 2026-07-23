@@ -1,33 +1,33 @@
 [gd_scene format=3 uid="uid://ccpmabb8gjwin"]
 
-[ext_resource type="Script" uid="uid://c0bhkufju0waj" path="res://scenes/PowerSelect.gd" id="1_0defc"]
-[ext_resource type="FontFile" uid="uid://tigroghm0sss" path="res://assets/PixelatedEleganceRegular-ovawB.ttf" id="2_jt2yi"]
-[ext_resource type="Texture2D" uid="uid://fhovsch1any4" path="res://assets/Card-layout.png" id="3_qlo0x"]
-[ext_resource type="Texture2D" uid="uid://diabn1shat6bd" path="res://assets/Card-layout-hover.png" id="4_ungif"]
+[ext_resource type="Script" uid="uid://c0bhkufju0waj" path="res://scenes/ui scenes/power_select/PowerSelect.gd" id="1_0l2tf"]
+[ext_resource type="FontFile" uid="uid://tigroghm0sss" path="res://assets/PixelatedEleganceRegular-ovawB.ttf" id="2_yuhaa"]
+[ext_resource type="Texture2D" uid="uid://fhovsch1any4" path="res://assets/Card-layout.png" id="3_r7qlf"]
+[ext_resource type="Texture2D" uid="uid://diabn1shat6bd" path="res://assets/Card-layout-hover.png" id="4_nkrue"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8n18e"]
-texture = ExtResource("3_qlo0x")
+texture = ExtResource("3_r7qlf")
 texture_margin_left = 5.0
 texture_margin_top = 5.0
 texture_margin_right = 5.0
 texture_margin_bottom = 5.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tjwpk"]
-texture = ExtResource("4_ungif")
+texture = ExtResource("4_nkrue")
 texture_margin_left = 5.0
 texture_margin_top = 5.0
 texture_margin_right = 5.0
 texture_margin_bottom = 5.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lpubu"]
-texture = ExtResource("4_ungif")
+texture = ExtResource("4_nkrue")
 texture_margin_left = 5.0
 texture_margin_top = 5.0
 texture_margin_right = 5.0
 texture_margin_bottom = 5.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lt2xq"]
-texture = ExtResource("4_ungif")
+texture = ExtResource("4_nkrue")
 texture_margin_left = 5.0
 texture_margin_top = 5.0
 texture_margin_right = 5.0
@@ -40,7 +40,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_0defc")
+script = ExtResource("1_0l2tf")
 
 [node name="Knight" type="Button" parent="." unique_id=211994600]
 texture_filter = 1
@@ -57,7 +57,7 @@ offset_bottom = -2.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.92941177, 0.9098039, 0.80784315, 1)
-theme_override_fonts/font = ExtResource("2_jt2yi")
+theme_override_fonts/font = ExtResource("2_yuhaa")
 theme_override_font_sizes/font_size = 8
 theme_override_styles/normal = SubResource("StyleBoxTexture_8n18e")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_8n18e")
@@ -79,7 +79,7 @@ offset_bottom = 32.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.92941177, 0.9098039, 0.80784315, 1)
-theme_override_fonts/font = ExtResource("2_jt2yi")
+theme_override_fonts/font = ExtResource("2_yuhaa")
 theme_override_font_sizes/font_size = 8
 theme_override_styles/normal = SubResource("StyleBoxTexture_8n18e")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_8n18e")
@@ -101,7 +101,7 @@ offset_bottom = 68.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.92941177, 0.9098039, 0.80784315, 1)
-theme_override_fonts/font = ExtResource("2_jt2yi")
+theme_override_fonts/font = ExtResource("2_yuhaa")
 theme_override_font_sizes/font_size = 8
 theme_override_styles/normal = SubResource("StyleBoxTexture_8n18e")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_8n18e")
@@ -119,7 +119,7 @@ offset_right = 124.0
 offset_bottom = 64.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0.92941177, 0.9098039, 0.80784315, 1)
-theme_override_fonts/font = ExtResource("2_jt2yi")
+theme_override_fonts/font = ExtResource("2_yuhaa")
 theme_override_font_sizes/font_size = 20
 text = "Select your power"
 
