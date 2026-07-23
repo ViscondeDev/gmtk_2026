@@ -3,6 +3,7 @@ class_name Level
 extends Node2D
 
 signal state_changed(new_state: State)
+signal game_ended()
 
 enum State {
 	LOADING,
@@ -36,3 +37,8 @@ func finish_turn() -> void:
 			current_state = State.ENEMY
 		State.ENEMY:
 			current_state = State.SELECTION
+
+
+func end_game(state: State) -> void:
+	current_state = state
+	game_ended.emit()

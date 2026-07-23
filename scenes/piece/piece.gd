@@ -20,8 +20,7 @@ func move_to_tile(tile: Vector2i) -> void:
 			tile in Board.current_board.pieces.keys()
 			and Board.current_board.pieces[tile].is_friendly != is_friendly
 		):
-			Board.current_board.pieces[tile].queue_free()
-			Board.current_board.pieces.erase(tile)
+			Board.current_board.pieces[tile].get_taken()
 		position = Board.current_board.map_to_local(tile)
 		Board.current_board.pieces.erase(current_board_position)
 		current_board_position = tile
@@ -29,3 +28,12 @@ func move_to_tile(tile: Vector2i) -> void:
 		Level.current.finish_turn()
 	else:
 		push_warning(name, " tried to move to invalid tile.")
+
+
+func get_taken() -> void:
+	if is_friendly:
+		Level.current.end_game(Level.State.LOST)
+	Board.current_board.pieces.erase(current_board_position)
+	if Board.current_board.pieces.is_empty():
+		Level.current.end_game(Level.State.WON)
+	queue_free()

@@ -4,7 +4,6 @@
 
 [node name="Root" type="Node2D" unique_id=302431742]
 
-[node name="Level" parent="." unique_id=1520508533 instance=ExtResource("1_j5px3")]
-position = Vector2(0, 1)
-
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=73636997]
+
+[node name="Level" parent="." unique_id=1820218999 instance=ExtResource("1_j5px3")]
