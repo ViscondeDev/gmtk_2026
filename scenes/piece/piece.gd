@@ -5,11 +5,6 @@ extends Node2D
 @export var movement_type: Movement
 var current_board_position: Vector2i
 var possible_moves: Array[Vector2i]
-var pieces := {
-	"rook": Rook,
-	"bishop": Bishop,
-	"knight": Knight,
-}
 
 
 func _ready():

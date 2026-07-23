@@ -40,4 +40,5 @@ func _get_clicked_cell() -> Vector2i:
 	var clicked_cell: Vector2i = local_to_map(get_local_mouse_position())
 	if clicked_cell in tiles:
 		return clicked_cell
+	print("clicked at ", clicked_cell)
 	return NULL_CELL
