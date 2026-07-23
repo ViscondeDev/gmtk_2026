@@ -5,7 +5,6 @@ extends Node2D
 @export var movement_type: Movement
 @export var is_friendly: bool = false
 
-var is_thretened: bool
 var current_board_position: Vector2i
 var possible_moves: Array[Vector2i]
 
