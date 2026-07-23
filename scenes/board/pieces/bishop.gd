@@ -18,6 +18,5 @@ static func get_valid_tiles(start_position: Vector2i) -> Array[Vector2i]:
 			start_position,
 			axis,
 		)
-	print(valid_moves)
 	Board.effects_layer.highlight_tiles(valid_moves)
 	return valid_moves
