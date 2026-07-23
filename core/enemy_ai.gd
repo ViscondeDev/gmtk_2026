@@ -20,6 +20,7 @@ func decide_moves() -> void:
 
 
 func map_pieces_and_movements() -> void:
+	enemy_pices.clear()
 	for coord in Board.current_board.pieces:
 		var piece := Board.current_board.pieces[coord]
 		if piece.is_friendly:

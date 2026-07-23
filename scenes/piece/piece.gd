@@ -21,6 +21,7 @@ func move_to_tile(tile: Vector2i) -> void:
 			and Board.current_board.pieces[tile].is_friendly != is_friendly
 		):
 			Board.current_board.pieces[tile].queue_free()
+			Board.current_board.pieces.erase(tile)
 		position = Board.current_board.map_to_local(tile)
 		Board.current_board.pieces.erase(current_board_position)
 		current_board_position = tile
