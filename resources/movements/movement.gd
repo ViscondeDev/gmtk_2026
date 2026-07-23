@@ -15,6 +15,7 @@ static func _validate_cells_in_line(
 		if is_blocked:
 			if Board.current_board.pieces[next_tile].is_friendly != is_friendly:
 				valid_moves.append(next_tile)
+				Board.current_board.pieces[next_tile].is_thretened = true
 		else:
 			valid_moves.append(next_tile)
 			valid_moves = valid_moves + _validate_cells_in_line(next_tile, axis, is_friendly)
