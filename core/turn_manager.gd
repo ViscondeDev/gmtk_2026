@@ -20,3 +20,11 @@ var current_state: State:
 func _ready() -> void:
 	current = self
 	current_state = State.SELECTION
+
+
+func finish_turn() -> void:
+	match current_state:
+		State.MOVEMENT:
+			current_state = State.ENEMY
+		State.ENEMY:
+			current_state = State.SELECTION
