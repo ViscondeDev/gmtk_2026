@@ -4,7 +4,7 @@ extends Node
 
 var pawn_position: Vector2i
 var enemy_pices: Dictionary[Vector2i, Piece]
-var possible_movements: Dictionary[Vector2i, Array]
+var possible_moves: Dictionary[Vector2i, PossibleCellStats]
 
 
 func watch_state(state: TurnManager.State) -> void:
@@ -14,9 +14,7 @@ func watch_state(state: TurnManager.State) -> void:
 
 func decide_moves() -> void:
 	map_pieces_and_movements()
-
-	if attempt_take():
-		return
+	if attempt_take(): return
 
 
 func map_pieces_and_movements() -> void:
@@ -27,14 +25,23 @@ func map_pieces_and_movements() -> void:
 		else:
 			enemy_pices[coord] = piece
 
-		possible_movements[coord] = piece.movement_type.get_valid_tiles()
+		var piece_moves :Array[Vector2i] = enemy_pices[coord].movement_type.get_script().get_valid_tiles(
+			coord,
+			false,
+		)
 
+		for tile in piece_moves:
+			if not possible_moves.has(tile):
+				var cell = PossibleCellStats.new()
+				possible_moves[tile] = cell
+			possible_moves[tile].reachable_from.append(coord)
 
 func attempt_take() -> bool:
-	for enemy_coord in possible_movements:
-		if pawn_position in possible_movements[enemy_coord]:
-			enemy_pices[enemy_coord].move_to_tile(pawn_position)
-			return true
+	if pawn_position in possible_moves.keys():
+		var enemy_position = possible_moves[pawn_position].reachable_from[0]
+		enemy_pices[enemy_position].move_to_tile(pawn_position)
+		return true
 	return false
 
-
+class PossibleCellStats:
+	var reachable_from: Array[Vector2i]
