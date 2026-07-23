@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://c2uy1q7o5g5nu"]
+
+[ext_resource type="Script" uid="uid://0j5eilfv1wyw" path="res://scenes/piece/piece.gd" id="1_huli3"]
+[ext_resource type="Texture2D" uid="uid://bc867ic2gdwvw" path="res://assets/characters.png" id="2_i7cdl"]
+
+[node name="Piece" type="Node2D" unique_id=1987036587]
+script = ExtResource("1_huli3")
+metadata/_custom_type_script = "uid://0j5eilfv1wyw"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1722815939]
+position = Vector2(0, -16)
+texture = ExtResource("2_i7cdl")
+hframes = 3
+vframes = 2

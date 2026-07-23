@@ -3,7 +3,8 @@
 [ext_resource type="TileSet" uid="uid://halyoheq7qe8" path="res://resources/tileset.tres" id="1_lrqlo"]
 [ext_resource type="Script" uid="uid://rnwdf3l1uqdm" path="res://scenes/board/board.gd" id="2_sqa0i"]
 [ext_resource type="Script" uid="uid://ttpxsm6ywhi3" path="res://scenes/board/board_effects.gd" id="3_jh1ax"]
-[ext_resource type="Script" uid="uid://d1su2tahy25pt" path="res://scenes/piece/pawn.gd" id="6_kycxp"]
+[ext_resource type="PackedScene" uid="uid://c2uy1q7o5g5nu" path="res://scenes/piece/piece.tscn" id="5_jh1ax"]
+[ext_resource type="PackedScene" uid="uid://dr0xjkmav1kfo" path="res://scenes/piece/pawn.tscn" id="6_kycxp"]
 [ext_resource type="Script" uid="uid://s6nqouvddqo0" path="res://core/turn_manager.gd" id="7_j287u"]
 
 [node name="Root" type="Node2D" unique_id=302431742]
@@ -23,9 +24,11 @@ script = ExtResource("3_jh1ax")
 [node name="TurnManager" type="Node" parent="Level" unique_id=970212259]
 script = ExtResource("7_j287u")
 
-[node name="Pawn" type="Node2D" parent="Level" unique_id=1180634007]
-position = Vector2(120, 71)
-script = ExtResource("6_kycxp")
-metadata/_custom_type_script = "uid://d1su2tahy25pt"
+[node name="Piece" parent="Level" unique_id=1987036587 instance=ExtResource("5_jh1ax")]
+position = Vector2(88, 71)
 
-[connection signal="state_changed" from="Level/TurnManager" to="Level/Pawn" method="watch_game_state"]
+[node name="Piece2" parent="Level" unique_id=619880526 instance=ExtResource("6_kycxp")]
+position = Vector2(200, 71)
+is_friendly = true
+
+[connection signal="state_changed" from="Level/TurnManager" to="Level/Piece2" method="watch_game_state"]

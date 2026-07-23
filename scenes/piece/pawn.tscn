@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://dr0xjkmav1kfo"]
+
+[ext_resource type="Script" uid="uid://d1su2tahy25pt" path="res://scenes/piece/pawn.gd" id="1_q620f"]
+[ext_resource type="Texture2D" uid="uid://bc867ic2gdwvw" path="res://assets/characters.png" id="2_f0taw"]
+
+[node name="Piece" type="Node2D" unique_id=619880526]
+script = ExtResource("1_q620f")
+metadata/_custom_type_script = "uid://d1su2tahy25pt"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1722815939]
+position = Vector2(0, -16)
+texture = ExtResource("2_f0taw")
+hframes = 3
+vframes = 2

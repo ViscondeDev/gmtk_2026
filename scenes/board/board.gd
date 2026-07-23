@@ -12,6 +12,7 @@ static var effects_layer: BoardEffects
 @export var accept_clicks: bool = true
 
 var tiles: Array[Vector2i]
+var pieces: Dictionary[Vector2i, Piece]
 
 
 func _ready() -> void:
