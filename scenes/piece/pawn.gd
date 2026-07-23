@@ -15,7 +15,10 @@ func _process(_delta: float) -> void:
 	if TurnManager.current.current_state == TurnManager.State.SELECTION:
 		for key: StringName in movement_keys:
 			if Input.is_action_just_pressed(key):
-				possible_moves = movement_keys[key].get_valid_tiles(current_board_position)
+				possible_moves = movement_keys[key].get_valid_tiles(
+					current_board_position,
+					is_friendly,
+				)
 				TurnManager.current.current_state = TurnManager.State.MOVEMENT
 
 
