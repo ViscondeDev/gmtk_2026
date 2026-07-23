@@ -31,4 +31,6 @@ position = Vector2(88, 71)
 position = Vector2(200, 71)
 is_friendly = true
 
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=73636997]
+
 [connection signal="state_changed" from="Level/TurnManager" to="Level/Piece2" method="watch_game_state"]
