@@ -25,6 +25,6 @@ func move_to_tile(tile: Vector2i) -> void:
 		Board.current_board.pieces.erase(current_board_position)
 		current_board_position = tile
 		Board.current_board.pieces[tile] = self
-		TurnManager.current.finish_turn()
+		Level.current.finish_turn()
 	else:
 		push_warning(name, " tried to move to invalid tile.")

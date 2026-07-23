@@ -10,22 +10,22 @@ var movement_keys := {
 
 
 func _process(_delta: float) -> void:
-	if TurnManager.current == null:
+	if Level.current == null:
 		return
-	if TurnManager.current.current_state == TurnManager.State.SELECTION:
+	if Level.current.current_state == Level.State.SELECTION:
 		for key: StringName in movement_keys:
 			if Input.is_action_just_pressed(key):
 				possible_moves = movement_keys[key].get_valid_tiles(
 					current_board_position,
 					is_friendly,
 				)
-				TurnManager.current.current_state = TurnManager.State.MOVEMENT
+				Level.current.current_state = Level.State.MOVEMENT
 
 
-func watch_game_state(state: TurnManager.State) -> void:
+func watch_game_state(state: Level.State) -> void:
 	match state:
-		TurnManager.State.MOVEMENT:
+		Level.State.MOVEMENT:
 			Board.current_board.cell_clicked.connect(move_to_tile)
-		TurnManager.State.SELECTION:
+		Level.State.SELECTION:
 			if Board.current_board.cell_clicked.is_connected(move_to_tile):
 				Board.current_board.cell_clicked.disconnect(move_to_tile)

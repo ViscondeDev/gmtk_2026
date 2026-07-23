@@ -6,8 +6,8 @@ var pawn_position: Vector2i
 var enemy_pices: Dictionary[Vector2i, Piece]
 
 
-func watch_state(state: TurnManager.State) -> void:
-	if state == TurnManager.State.ENEMY:
+func watch_state(state: Level.State) -> void:
+	if state == Level.State.ENEMY:
 		decide_moves()
 
 

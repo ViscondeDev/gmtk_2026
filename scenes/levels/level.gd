@@ -1,17 +1,23 @@
-@icon("res://addons/at-icons/node/arrows_clockwise.svg")
-class_name TurnManager
-extends Node
+@icon("res://addons/at-icons/node2d/globe.svg")
+class_name Level
+extends Node2D
 
 signal state_changed(new_state: State)
 
 enum State {
+	LOADING,
 	SELECTION,
 	MOVEMENT,
 	ENEMY,
+	WON,
+	LOST,
 }
-static var current: TurnManager
+static var current: Level
 
-var current_state: State:
+@onready var pawn: Pawn = %Pawn
+@onready var enemie_ai: EnemyAI = %EnemyAI
+
+var current_state: State = State.LOADING:
 	set(s):
 		current_state = s
 		state_changed.emit(current_state)
@@ -19,6 +25,8 @@ var current_state: State:
 
 func _ready() -> void:
 	current = self
+	state_changed.connect(pawn.watch_game_state)
+	state_changed.connect(enemie_ai.watch_state)
 	current_state = State.SELECTION
 
 
