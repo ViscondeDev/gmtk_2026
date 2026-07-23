@@ -1,0 +1,129 @@
+[gd_scene format=3 uid="uid://cueqp5kvayvsf"]
+
+[ext_resource type="Script" uid="uid://dtw6jyvjmxwop" path="res://scenes/main_screen/MainScreen.gd" id="1_7oy5c"]
+[ext_resource type="FontFile" uid="uid://tigroghm0sss" path="res://assets/PixelatedEleganceRegular-ovawB.ttf" id="1_no7ry"]
+[ext_resource type="Texture2D" uid="uid://fhovsch1any4" path="res://assets/Card-layout.png" id="2_7oy5c"]
+[ext_resource type="Texture2D" uid="uid://diabn1shat6bd" path="res://assets/Card-layout-hover.png" id="3_ju4p7"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_svp2y"]
+texture = ExtResource("2_7oy5c")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1agfe"]
+texture = ExtResource("3_ju4p7")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lf8d6"]
+texture = ExtResource("3_ju4p7")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_50uwr"]
+texture = ExtResource("3_ju4p7")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+
+[node name="MainScreen" type="Control" unique_id=182909135]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7oy5c")
+
+[node name="Start" type="Button" parent="." unique_id=1179702164]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -63.559998
+offset_top = 13.0
+offset_right = 64.44
+offset_bottom = 35.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.92941177, 0.9098039, 0.80784315, 1)
+theme_override_fonts/font = ExtResource("1_no7ry")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/normal = SubResource("StyleBoxTexture_svp2y")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_svp2y")
+theme_override_styles/hover = SubResource("StyleBoxTexture_1agfe")
+text = "Start"
+
+[node name="LevelSelect" type="Button" parent="." unique_id=217272043]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = 47.0
+offset_right = 64.0
+offset_bottom = 69.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.92941177, 0.9098039, 0.80784315, 1)
+theme_override_fonts/font = ExtResource("1_no7ry")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/normal = SubResource("StyleBoxTexture_svp2y")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_svp2y")
+theme_override_styles/hover = SubResource("StyleBoxTexture_lf8d6")
+text = "Select Level"
+
+[node name="Credits" type="Button" parent="." unique_id=971683875]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = 83.0
+offset_right = 64.0
+offset_bottom = 105.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.92941177, 0.9098039, 0.80784315, 1)
+theme_override_fonts/font = ExtResource("1_no7ry")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/normal = SubResource("StyleBoxTexture_svp2y")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_svp2y")
+theme_override_styles/hover = SubResource("StyleBoxTexture_50uwr")
+text = "Credits"
+
+[node name="Label" type="Label" parent="." unique_id=1496148733]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -122.0
+offset_top = 59.0
+offset_right = 124.0
+offset_bottom = 82.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.92941177, 0.9098039, 0.80784315, 1)
+theme_override_fonts/font = ExtResource("1_no7ry")
+theme_override_font_sizes/font_size = 34
+text = "[Game title]"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="LevelSelect" to="." method="_on_level_select_pressed"]
+[connection signal="pressed" from="Credits" to="." method="_on_credits_pressed"]
