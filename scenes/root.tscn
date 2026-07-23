@@ -34,8 +34,12 @@ script = ExtResource("7_j287u")
 position = Vector2(88, 71)
 movement_type = SubResource("Resource_5sfjl")
 
+[node name="Piece2" parent="Level" unique_id=1233478438 instance=ExtResource("5_jh1ax")]
+position = Vector2(56, 135)
+movement_type = SubResource("Resource_5sfjl")
+
 [node name="Pawn" parent="Level" unique_id=619880526 instance=ExtResource("6_kycxp")]
-position = Vector2(200, 71)
+position = Vector2(120, 135)
 is_friendly = true
 
 [node name="EnemyAI" type="Node" parent="Level" unique_id=1772446295]

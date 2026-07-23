@@ -27,4 +27,5 @@ func watch_game_state(state: TurnManager.State) -> void:
 		TurnManager.State.MOVEMENT:
 			Board.current_board.cell_clicked.connect(move_to_tile)
 		TurnManager.State.SELECTION:
-			Board.current_board.cell_clicked.disconnect(move_to_tile)
+			if Board.current_board.cell_clicked.is_connected(move_to_tile):
+				Board.current_board.cell_clicked.disconnect(move_to_tile)

@@ -15,6 +15,8 @@ func decide_moves() -> void:
 	map_pieces_and_movements()
 	if attempt_take():
 		return
+	if attempt_deffend():
+		return
 
 
 func map_pieces_and_movements() -> void:
@@ -28,14 +30,32 @@ func map_pieces_and_movements() -> void:
 				piece.current_board_position,
 				piece.is_friendly,
 			)
-			print(piece.possible_moves)
 
 
 func attempt_take() -> bool:
-	print(pawn_position)
 	for piece in enemy_pices.values():
 		if pawn_position in piece.possible_moves:
-			print("taking")
 			piece.move_to_tile(pawn_position)
 			return true
+	return false
+
+
+func attempt_deffend() -> bool:
+	var reachable_tiles: Dictionary[Vector2i, Array]
+	var best_cell: Vector2i = Board.NULL_CELL
+	for piece in enemy_pices.values():
+		for tile: Vector2i in piece.possible_moves:
+			if not reachable_tiles.has(tile):
+				reachable_tiles[tile] = []
+			reachable_tiles[tile].append(piece)
+
+			if (
+				best_cell == Board.NULL_CELL
+				or reachable_tiles[tile].size() > reachable_tiles[best_cell].size()
+			):
+				best_cell = tile
+	if best_cell != Board.NULL_CELL:
+		reachable_tiles[best_cell][0].move_to_tile(best_cell)
+		return true
+
 	return false
