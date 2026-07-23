@@ -1,6 +1,6 @@
 @icon("res://addons/at-icons/node2d/chess_knight.svg")
 class_name Knight
-extends Piece
+extends Movement
 
 
 static func get_valid_tiles(start_position: Vector2i) -> Array[Vector2i]:
