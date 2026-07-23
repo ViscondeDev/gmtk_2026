@@ -14,7 +14,6 @@ static var current: TurnManager
 var current_state: State:
 	set(s):
 		current_state = s
-		print(current_state)
 		state_changed.emit(current_state)
 
 
