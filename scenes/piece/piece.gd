@@ -8,6 +8,8 @@ extends Node2D
 var current_board_position: Vector2i
 var possible_moves: Array[Vector2i]
 
+@onready var movement_animation: PieceMovement = %PieceMovement
+
 
 func _ready():
 	current_board_position = Board.current_board.local_to_map(global_position)
@@ -21,7 +23,13 @@ func move_to_tile(tile: Vector2i) -> void:
 			and Board.current_board.pieces[tile].is_friendly != is_friendly
 		):
 			Board.current_board.pieces[tile].get_taken()
-		position = Board.current_board.map_to_local(tile)
+
+		movement_animation.queue_movement(
+			Board.current_board.map_to_local(current_board_position),
+			Board.current_board.map_to_local(tile),
+		)
+		await movement_animation.movement_finished
+
 		Board.current_board.pieces.erase(current_board_position)
 		current_board_position = tile
 		Board.current_board.pieces[tile] = self

@@ -2,8 +2,11 @@
 
 [ext_resource type="Script" uid="uid://d1su2tahy25pt" path="res://scenes/piece/pawn.gd" id="1_q620f"]
 [ext_resource type="Texture2D" uid="uid://bc867ic2gdwvw" path="res://assets/characters.png" id="2_f0taw"]
+[ext_resource type="Script" uid="uid://oeyu1nrn22mj" path="res://scenes/piece/piece_movement.gd" id="3_f0taw"]
+[ext_resource type="Curve" uid="uid://s4x713h4exq2" path="res://resources/movement_curve.tres" id="4_s3kgf"]
+[ext_resource type="Curve" uid="uid://djlemmwnx1xya" path="res://resources/tilt_curve.tres" id="5_xgbuj"]
 
-[node name="Piece" type="Node2D" unique_id=619880526]
+[node name="Pawn" type="Node2D" unique_id=619880526]
 script = ExtResource("1_q620f")
 metadata/_custom_type_script = "uid://d1su2tahy25pt"
 
@@ -13,3 +16,19 @@ texture = ExtResource("2_f0taw")
 hframes = 3
 vframes = 2
 frame = 2
+
+[node name="PieceMovement" type="AnimationPlayer" parent="." unique_id=1184581654 node_paths=PackedStringArray("body")]
+unique_name_in_owner = true
+script = ExtResource("3_f0taw")
+body = NodePath("..")
+movement_curve = ExtResource("4_s3kgf")
+tilt_curve = ExtResource("5_xgbuj")
+metadata/_custom_type_script = "uid://oeyu1nrn22mj"
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=353904607]
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_left_margin = 0.5
+drag_top_margin = 0.5
+drag_right_margin = 0.5
+drag_bottom_margin = 0.5
