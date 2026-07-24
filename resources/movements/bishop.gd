@@ -3,6 +3,8 @@
 class_name Bishop
 extends Movement
 
+static var sprite_frame: int = 1
+
 
 static func get_valid_tiles(start_position: Vector2i, is_friendly: bool) -> Array[Vector2i]:
 	var possible_moves_unvalidated := [

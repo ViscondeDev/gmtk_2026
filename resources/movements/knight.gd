@@ -2,6 +2,8 @@
 class_name Knight
 extends Movement
 
+static var sprite_frame: int = 0
+
 
 static func get_valid_tiles(start_position: Vector2i, is_friendly: bool) -> Array[Vector2i]:
 	var possible_moves_unvalidated := [

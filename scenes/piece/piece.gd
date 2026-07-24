@@ -9,9 +9,12 @@ var current_board_position: Vector2i
 var possible_moves: Array[Vector2i]
 
 @onready var movement_animation: PieceMovement = %PieceMovement
+@onready var sprite: Sprite2D = %Sprite2D
 
 
 func _ready():
+	if movement_type != null:
+		sprite.frame = movement_type.sprite_frame
 	current_board_position = Board.current_board.local_to_map(global_position)
 	Board.current_board.pieces[current_board_position] = self
 

@@ -11,6 +11,7 @@ script = ExtResource("1_huli3")
 metadata/_custom_type_script = "uid://0j5eilfv1wyw"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1722815939]
+unique_name_in_owner = true
 position = Vector2(0, -16)
 texture = ExtResource("2_i7cdl")
 hframes = 3

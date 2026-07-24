@@ -20,6 +20,7 @@ static func _validate_cells_in_line(
 			valid_moves = valid_moves + _validate_cells_in_line(next_tile, axis, is_friendly)
 	return valid_moves
 
+
 static func get_valid_tiles(_start_position: Vector2i, _is_friendly: bool) -> Array[Vector2i]:
 	printerr("accessing undefined class")
-	return[]
+	return []

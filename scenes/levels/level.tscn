@@ -12,16 +12,16 @@
 [ext_resource type="Script" uid="uid://bme1cp2kkltt3" path="res://core/enemy_ai.gd" id="8_mq31s"]
 
 [sub_resource type="Resource" id="Resource_icy5c"]
-script = ExtResource("6_rmjfq")
-metadata/_custom_type_script = "uid://bu2b5vdohd26k"
+script = ExtResource("6_qogh7")
+metadata/_custom_type_script = "uid://c3pny7k8vvqvo"
 
-[sub_resource type="Resource" id="Resource_ouxo3"]
+[sub_resource type="Resource" id="Resource_rmjfq"]
 script = ExtResource("7_7pb6i")
 metadata/_custom_type_script = "uid://27oopufgmga2"
 
-[sub_resource type="Resource" id="Resource_5sfjl"]
-script = ExtResource("6_qogh7")
-metadata/_custom_type_script = "uid://c3pny7k8vvqvo"
+[sub_resource type="Resource" id="Resource_7pb6i"]
+script = ExtResource("6_rmjfq")
+metadata/_custom_type_script = "uid://bu2b5vdohd26k"
 
 [node name="Level" type="Node2D" unique_id=1820218999]
 script = ExtResource("1_icy5c")
@@ -42,11 +42,11 @@ movement_type = SubResource("Resource_icy5c")
 
 [node name="Piece3" parent="." unique_id=1460264443 instance=ExtResource("5_xfk5q")]
 position = Vector2(136, 72)
-movement_type = SubResource("Resource_ouxo3")
+movement_type = SubResource("Resource_rmjfq")
 
 [node name="Piece2" parent="." unique_id=1924984898 instance=ExtResource("5_xfk5q")]
 position = Vector2(56, 135)
-movement_type = SubResource("Resource_5sfjl")
+movement_type = SubResource("Resource_7pb6i")
 
 [node name="Pawn" parent="." unique_id=619880526 instance=ExtResource("7_8iyoh")]
 unique_name_in_owner = true

@@ -27,6 +27,7 @@ func _process(_delta: float) -> void:
 	if Level.current == null:
 		return
 	if Level.current.current_state == Level.State.SELECTION:
+		Board.effects_layer.clear()
 		for key: StringName in movement_keys:
 			Level.current.update_selection.emit(selection_type[key], SelectionState.NONE)
 			if Input.is_action_just_pressed(key):
