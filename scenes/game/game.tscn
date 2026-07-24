@@ -2,15 +2,46 @@
 
 [ext_resource type="Script" uid="uid://c7b8dcmhm1rx1" path="res://scenes/game/game.gd" id="1_sul5r"]
 [ext_resource type="FontFile" uid="uid://tigroghm0sss" path="res://assets/PixelatedEleganceRegular-ovawB.ttf" id="2_7h61r"]
+[ext_resource type="Texture2D" uid="uid://diabn1shat6bd" path="res://assets/Card-layout-hover.png" id="3_kelw5"]
+[ext_resource type="Texture2D" uid="uid://1t35x7umk145" path="res://assets/Pause.png" id="4_lfrn8"]
+[ext_resource type="Texture2D" uid="uid://cmetltbtg0ww5" path="res://assets/Powers.png" id="5_lfrn8"]
+[ext_resource type="Script" uid="uid://cyn7mo3e1b17q" path="res://scenes/game/pause_screen.gd" id="6_5i0tg"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_5i0tg"]
+load_path = "res://.godot/imported/Card-layout.png-97ced0726fd48f03e63df396eacfef7d.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bdhmt"]
+texture = SubResource("CompressedTexture2D_5i0tg")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_87uf6"]
+load_path = "res://.godot/imported/Card-layout.png-97ced0726fd48f03e63df396eacfef7d.ctex"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2a8rs"]
+texture = SubResource("CompressedTexture2D_87uf6")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4j704"]
+texture = ExtResource("3_kelw5")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_0sr1o"]
 load_path = "res://.godot/imported/Card-layout.png-97ced0726fd48f03e63df396eacfef7d.ctex"
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kelw5"]
-content_margin_left = 15.0
-content_margin_top = 15.0
-content_margin_right = 15.0
-content_margin_bottom = 15.0
+content_margin_left = 20.0
+content_margin_top = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
 texture = SubResource("CompressedTexture2D_0sr1o")
 texture_margin_left = 5.0
 texture_margin_top = 5.0
@@ -21,6 +52,10 @@ texture_margin_bottom = 5.0
 load_path = "res://.godot/imported/Card-layout.png-97ced0726fd48f03e63df396eacfef7d.ctex"
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5i0tg"]
+content_margin_left = 20.0
+content_margin_top = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
 texture = SubResource("CompressedTexture2D_lfrn8")
 texture_margin_left = 5.0
 texture_margin_top = 5.0
@@ -31,13 +66,50 @@ texture_margin_bottom = 5.0
 load_path = "res://.godot/imported/Card-layout-hover.png-c50071586d3733cf8811d3ed9bcc8a70.ctex"
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_87uf6"]
+content_margin_left = 20.0
+content_margin_top = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
 texture = SubResource("CompressedTexture2D_bdhmt")
 texture_margin_left = 5.0
 texture_margin_top = 5.0
 texture_margin_right = 5.0
 texture_margin_bottom = 5.0
 
-[node name="Game" type="Node2D" unique_id=1909432710]
+[sub_resource type="AtlasTexture" id="AtlasTexture_2oa66"]
+atlas = ExtResource("5_lfrn8")
+region = Rect2(62, 0, 31, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5i0tg"]
+atlas = ExtResource("5_lfrn8")
+region = Rect2(0, 0, 31, 31)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bdhmt"]
+atlas = ExtResource("5_lfrn8")
+region = Rect2(31, 0, 31, 31)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lfrn8"]
+texture = SubResource("CompressedTexture2D_0sr1o")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kp23o"]
+texture = SubResource("CompressedTexture2D_lfrn8")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5jirj"]
+texture = SubResource("CompressedTexture2D_bdhmt")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+
+[node name="Game" type="Node" unique_id=749751007]
 script = ExtResource("1_sul5r")
 
 [node name="UI" type="Control" parent="." unique_id=190612377]
@@ -48,22 +120,55 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="UI" unique_id=566182609]
-layout_mode = 0
-offset_left = 366.0
-offset_right = 426.0
-offset_bottom = 240.0
+[node name="SideBar" type="ColorRect" parent="UI" unique_id=566182609]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -63.0
+grow_horizontal = 0
+grow_vertical = 2
 color = Color(0.22745098, 0.13333334, 0.24705882, 1)
 
-[node name="GridContainer" type="GridContainer" parent="UI/ColorRect" unique_id=1607045904]
+[node name="Pause" type="Button" parent="UI/SideBar" unique_id=250510598]
+texture_filter = 1
+layout_mode = 0
+offset_left = 29.0
+offset_top = 9.0
+offset_right = 50.0
+offset_bottom = 31.0
+theme_override_colors/font_color = Color(0.92941177, 0.9098039, 0.80784315, 1)
+theme_override_fonts/font = ExtResource("2_7h61r")
+theme_override_font_sizes/font_size = 15
+theme_override_styles/normal = SubResource("StyleBoxTexture_bdhmt")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_2a8rs")
+theme_override_styles/hover = SubResource("StyleBoxTexture_4j704")
+
+[node name="TextureRect" type="TextureRect" parent="UI/SideBar/Pause" unique_id=319972396]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -7.4999847
+offset_top = -7.999999
+offset_right = 7.5000153
+offset_bottom = 7.000001
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_lfrn8")
+
+[node name="GridContainer" type="GridContainer" parent="UI/SideBar" unique_id=1607045904]
 layout_mode = 0
 offset_left = 12.0
-offset_top = 34.0
+offset_top = 53.0
 offset_right = 49.0
-offset_bottom = 198.0
+offset_bottom = 217.0
 theme_override_constants/v_separation = 25
 
-[node name="Knight" type="Button" parent="UI/ColorRect/GridContainer" unique_id=1241544377]
+[node name="Knight" type="Button" parent="UI/SideBar/GridContainer" unique_id=1241544377]
 texture_filter = 1
 layout_mode = 2
 theme_override_colors/font_color = Color(0.92941177, 0.9098039, 0.80784315, 1)
@@ -72,20 +177,23 @@ theme_override_font_sizes/font_size = 8
 theme_override_styles/normal = SubResource("StyleBoxTexture_kelw5")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_5i0tg")
 theme_override_styles/hover = SubResource("StyleBoxTexture_87uf6")
-text = "K"
 
-[node name="Bishop" type="Button" parent="UI/ColorRect/GridContainer" unique_id=622028191]
-texture_filter = 1
-layout_mode = 2
-theme_override_colors/font_color = Color(0.92941177, 0.9098039, 0.80784315, 1)
-theme_override_fonts/font = ExtResource("2_7h61r")
-theme_override_font_sizes/font_size = 8
-theme_override_styles/normal = SubResource("StyleBoxTexture_kelw5")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_5i0tg")
-theme_override_styles/hover = SubResource("StyleBoxTexture_87uf6")
-text = "B"
+[node name="TextureRect" type="TextureRect" parent="UI/SideBar/GridContainer/Knight" unique_id=1864897735]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.5
+offset_top = -15.5
+offset_right = 15.5
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_2oa66")
 
-[node name="Rook" type="Button" parent="UI/ColorRect/GridContainer" unique_id=1392467393]
+[node name="Bishop" type="Button" parent="UI/SideBar/GridContainer" unique_id=622028191]
 texture_filter = 1
 layout_mode = 2
 theme_override_colors/font_color = Color(0.92941177, 0.9098039, 0.80784315, 1)
@@ -94,5 +202,165 @@ theme_override_font_sizes/font_size = 8
 theme_override_styles/normal = SubResource("StyleBoxTexture_kelw5")
 theme_override_styles/pressed = SubResource("StyleBoxTexture_5i0tg")
 theme_override_styles/hover = SubResource("StyleBoxTexture_87uf6")
-text = "R
-"
+
+[node name="TextureRect" type="TextureRect" parent="UI/SideBar/GridContainer/Bishop" unique_id=362565914]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.5
+offset_top = -15.5
+offset_right = 15.5
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_5i0tg")
+
+[node name="Rook" type="Button" parent="UI/SideBar/GridContainer" unique_id=1392467393]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(0.92941177, 0.9098039, 0.80784315, 1)
+theme_override_fonts/font = ExtResource("2_7h61r")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/normal = SubResource("StyleBoxTexture_kelw5")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_5i0tg")
+theme_override_styles/hover = SubResource("StyleBoxTexture_87uf6")
+
+[node name="TextureRect" type="TextureRect" parent="UI/SideBar/GridContainer/Rook" unique_id=767516327]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.5
+offset_top = -15.5
+offset_right = 15.5
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_bdhmt")
+
+[node name="PauseScreen" type="ColorRect" parent="UI" unique_id=17629139]
+process_mode = 3
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.078431375, 0.05882353, 0.08235294, 0.32156864)
+script = ExtResource("6_5i0tg")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="UI/PauseScreen" unique_id=1388806422]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -52.5
+offset_top = -62.5
+offset_right = 52.5
+offset_bottom = 62.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_kelw5")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="Resume" type="Button" parent="UI/PauseScreen" unique_id=1141201007]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -38.5
+offset_top = -12.485001
+offset_right = 38.5
+offset_bottom = 2.5149994
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.92941177, 0.9098039, 0.80784315, 1)
+theme_override_fonts/font = ExtResource("2_7h61r")
+theme_override_font_sizes/font_size = 4
+theme_override_styles/normal = SubResource("StyleBoxTexture_lfrn8")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_kp23o")
+theme_override_styles/hover = SubResource("StyleBoxTexture_5jirj")
+text = "Resume"
+
+[node name="RestartLevel" type="Button" parent="UI/PauseScreen" unique_id=2018462547]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -38.5
+offset_top = 10.175003
+offset_right = 38.5
+offset_bottom = 25.175064
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.92941177, 0.9098039, 0.80784315, 1)
+theme_override_fonts/font = ExtResource("2_7h61r")
+theme_override_font_sizes/font_size = 4
+theme_override_styles/normal = SubResource("StyleBoxTexture_lfrn8")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_kp23o")
+theme_override_styles/hover = SubResource("StyleBoxTexture_5jirj")
+text = "Restart Level"
+
+[node name="Quit" type="Button" parent="UI/PauseScreen" unique_id=2025140597]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -38.5
+offset_top = 31.074997
+offset_right = 38.5
+offset_bottom = 46.074997
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.92941177, 0.9098039, 0.80784315, 1)
+theme_override_fonts/font = ExtResource("2_7h61r")
+theme_override_font_sizes/font_size = 4
+theme_override_styles/normal = SubResource("StyleBoxTexture_lfrn8")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_kp23o")
+theme_override_styles/hover = SubResource("StyleBoxTexture_5jirj")
+text = "Quit"
+
+[node name="Label" type="Label" parent="UI/PauseScreen" unique_id=195359474]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -37.5
+offset_top = -40.9
+offset_right = 37.5
+offset_bottom = -25.900002
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.92941177, 0.9098039, 0.80784315, 1)
+theme_override_fonts/font = ExtResource("2_7h61r")
+text = "Paused"
+
+[connection signal="pressed" from="UI/SideBar/Pause" to="." method="_on_pause_pressed"]
+[connection signal="quit" from="UI/PauseScreen" to="." method="_on_pause_screen_quit"]
+[connection signal="restart" from="UI/PauseScreen" to="." method="_on_pause_screen_restart"]
+[connection signal="pressed" from="UI/PauseScreen/Resume" to="UI/PauseScreen" method="_on_resume_pressed"]
+[connection signal="pressed" from="UI/PauseScreen/RestartLevel" to="UI/PauseScreen" method="_on_restart_level_pressed"]
+[connection signal="pressed" from="UI/PauseScreen/Quit" to="UI/PauseScreen" method="_on_quit_pressed"]
