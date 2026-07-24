@@ -1,19 +1,41 @@
 extends Node
 
-"""
-Expected methods and signals from levels
-```
-signal win()
-signal lose()
-```
-"""
-
 signal quit()
 signal update_level(level: int)
 
+
+enum Selection {
+	KNIGHT = 0,
+	BISHOP = 1,
+	ROOK = 2,
+}
+enum SelectionState {
+	SELECTED = 1,
+	NONE = 2,
+}
+enum GameState {
+	LOADING = 0,
+	SELECTION = 1,
+	MOVEMENT = 2,
+	ENEMY = 3,
+	WON = 4,
+	LOST = 5,
+}
+
+
 const loading_scene = preload("res://scenes/ui scenes/Loading.tscn")
-@onready var loadscreen_instance = loading_scene.instantiate()
 @export var level: int = 0
+@onready var loadscreen_instance = loading_scene.instantiate()
+@onready var power_selections: Array[Button] = [
+	%Knight,
+	%Bishop,
+	%Rook,
+]
+@onready var selection_states: Array[SelectionState] = [
+	SelectionState.NONE,
+	SelectionState.NONE,
+	SelectionState.NONE,
+]
 
 var loaded_scene: PackedScene = null
 var current_instance: Node = null
@@ -22,41 +44,51 @@ var current_instance: Node = null
 func _ready() -> void:
 	_load_level(level)
 	
-	# TODO: Remove these two lines when game is actually there.
-	# This is just for testing to be sure everything works, the levels
-	# themselves are supposed to signal win to update levels
-	await get_tree().create_timer(3).timeout
-	update_level.emit(level + 1)
+	for i in range(len(power_selections)):
+		match selection_states[i]:
+			SelectionState.SELECTED:
+				power_selections[i].disabled = false
+			_:
+				power_selections[i].disabled = true
 
 
-func _load_level(level: int):
-	if true: # TODO: Remove this block when levels exist
-		return
+func _load_level(to_load: int):
+	if to_load > 1:
+		quit.emit()
 
 	if current_instance != null:
 		current_instance.queue_free()
 	add_child(loadscreen_instance)
 	
-	match level:
-		# TODO: Add other levels here and remove 0
-		0:
-			loaded_scene = load("res://path/to/level0.tscn")
+	match to_load:
+		1:
+			loaded_scene = load("res://scenes/levels/level.tscn")
 
 	current_instance = loaded_scene.instantiate()
-	current_instance.win.connect(_win_signal)
-	current_instance.lose.connect(_lose_signal)
+	current_instance.state_changed.connect(_update_state)
+	current_instance.update_selection.connect(_update_selection)
 
 	remove_child(loadscreen_instance)
 	add_child(current_instance)
 
 
-func _win_signal():
-	update_level.emit(level + 1)
+func _update_state(new_state: GameState):
+	match new_state:
+		GameState.WON:
+			update_level.emit(level + 1)
+		GameState.LOST:
+			_load_level(level)
 
 
-func _lose_signal():
-	quit.emit()
+func _update_selection(selection: Selection, state: SelectionState):
+	selection_states[selection] = state
 
+	for i in range(len(power_selections)):
+		match selection_states[i]:
+			SelectionState.SELECTED:
+				power_selections[i].disabled = false
+			_:
+				power_selections[i].disabled = true
 
 func _on_pause_pressed() -> void:
 	get_tree().paused = true
