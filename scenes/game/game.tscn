@@ -4,6 +4,7 @@
 [ext_resource type="FontFile" uid="uid://tigroghm0sss" path="res://assets/PixelatedEleganceRegular-ovawB.ttf" id="2_7h61r"]
 [ext_resource type="Texture2D" uid="uid://diabn1shat6bd" path="res://assets/Card-layout-hover.png" id="3_kelw5"]
 [ext_resource type="Texture2D" uid="uid://1t35x7umk145" path="res://assets/Pause.png" id="4_lfrn8"]
+[ext_resource type="Texture2D" uid="uid://685rf4oha7m3" path="res://assets/Card-layout-disabled.png" id="5_bdhmt"]
 [ext_resource type="Texture2D" uid="uid://cmetltbtg0ww5" path="res://assets/Powers.png" id="5_lfrn8"]
 [ext_resource type="Script" uid="uid://cyn7mo3e1b17q" path="res://scenes/game/pause_screen.gd" id="6_5i0tg"]
 
@@ -48,20 +49,6 @@ texture_margin_top = 5.0
 texture_margin_right = 5.0
 texture_margin_bottom = 5.0
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_lfrn8"]
-load_path = "res://.godot/imported/Card-layout.png-97ced0726fd48f03e63df396eacfef7d.ctex"
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5i0tg"]
-content_margin_left = 20.0
-content_margin_top = 20.0
-content_margin_right = 20.0
-content_margin_bottom = 20.0
-texture = SubResource("CompressedTexture2D_lfrn8")
-texture_margin_left = 5.0
-texture_margin_top = 5.0
-texture_margin_right = 5.0
-texture_margin_bottom = 5.0
-
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_bdhmt"]
 load_path = "res://.godot/imported/Card-layout-hover.png-c50071586d3733cf8811d3ed9bcc8a70.ctex"
 
@@ -71,6 +58,17 @@ content_margin_top = 20.0
 content_margin_right = 20.0
 content_margin_bottom = 20.0
 texture = SubResource("CompressedTexture2D_bdhmt")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vaxfo"]
+content_margin_left = 20.0
+content_margin_top = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
+texture = ExtResource("5_bdhmt")
 texture_margin_left = 5.0
 texture_margin_top = 5.0
 texture_margin_right = 5.0
@@ -95,6 +93,9 @@ texture_margin_top = 5.0
 texture_margin_right = 5.0
 texture_margin_bottom = 5.0
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_lfrn8"]
+load_path = "res://.godot/imported/Card-layout.png-97ced0726fd48f03e63df396eacfef7d.ctex"
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kp23o"]
 texture = SubResource("CompressedTexture2D_lfrn8")
 texture_margin_left = 5.0
@@ -113,6 +114,7 @@ texture_margin_bottom = 5.0
 script = ExtResource("1_sul5r")
 
 [node name="UI" type="Control" parent="." unique_id=190612377]
+z_index = 10
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -169,14 +171,16 @@ offset_bottom = 217.0
 theme_override_constants/v_separation = 25
 
 [node name="Knight" type="Button" parent="UI/SideBar/GridContainer" unique_id=1241544377]
+unique_name_in_owner = true
 texture_filter = 1
 layout_mode = 2
+mouse_filter = 2
 theme_override_colors/font_color = Color(0.92941177, 0.9098039, 0.80784315, 1)
 theme_override_fonts/font = ExtResource("2_7h61r")
 theme_override_font_sizes/font_size = 8
 theme_override_styles/normal = SubResource("StyleBoxTexture_kelw5")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_5i0tg")
-theme_override_styles/hover = SubResource("StyleBoxTexture_87uf6")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_87uf6")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_vaxfo")
 
 [node name="TextureRect" type="TextureRect" parent="UI/SideBar/GridContainer/Knight" unique_id=1864897735]
 layout_mode = 1
@@ -194,14 +198,16 @@ grow_vertical = 2
 texture = SubResource("AtlasTexture_2oa66")
 
 [node name="Bishop" type="Button" parent="UI/SideBar/GridContainer" unique_id=622028191]
+unique_name_in_owner = true
 texture_filter = 1
 layout_mode = 2
+mouse_filter = 2
 theme_override_colors/font_color = Color(0.92941177, 0.9098039, 0.80784315, 1)
 theme_override_fonts/font = ExtResource("2_7h61r")
 theme_override_font_sizes/font_size = 8
 theme_override_styles/normal = SubResource("StyleBoxTexture_kelw5")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_5i0tg")
-theme_override_styles/hover = SubResource("StyleBoxTexture_87uf6")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_87uf6")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_vaxfo")
 
 [node name="TextureRect" type="TextureRect" parent="UI/SideBar/GridContainer/Bishop" unique_id=362565914]
 layout_mode = 1
@@ -219,14 +225,16 @@ grow_vertical = 2
 texture = SubResource("AtlasTexture_5i0tg")
 
 [node name="Rook" type="Button" parent="UI/SideBar/GridContainer" unique_id=1392467393]
+unique_name_in_owner = true
 texture_filter = 1
 layout_mode = 2
+mouse_filter = 2
 theme_override_colors/font_color = Color(0.92941177, 0.9098039, 0.80784315, 1)
 theme_override_fonts/font = ExtResource("2_7h61r")
 theme_override_font_sizes/font_size = 8
 theme_override_styles/normal = SubResource("StyleBoxTexture_kelw5")
-theme_override_styles/pressed = SubResource("StyleBoxTexture_5i0tg")
-theme_override_styles/hover = SubResource("StyleBoxTexture_87uf6")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_87uf6")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_vaxfo")
 
 [node name="TextureRect" type="TextureRect" parent="UI/SideBar/GridContainer/Rook" unique_id=767516327]
 layout_mode = 1

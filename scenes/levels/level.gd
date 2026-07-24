@@ -3,18 +3,30 @@ class_name Level
 extends Node2D
 
 signal state_changed(new_state: State)
-signal game_ended()
+signal update_selection(selection: Selection, state: SelectionState)
 
 enum State {
-	LOADING,
-	SELECTION,
-	MOVEMENT,
-	ENEMY,
-	WON,
-	LOST,
+	LOADING = 0,
+	SELECTION = 1,
+	MOVEMENT = 2,
+	ENEMY = 3,
+	WON = 4,
+	LOST = 5,
 }
+enum Selection {
+	KNIGHT = 0,
+	BISHOP = 1,
+	ROOK = 2,
+}
+enum SelectionState {
+	DISABLED = 0,
+	SELECTED = 1,
+	NONE = 2,
+}
+
 static var current: Level
 
+@export var pawn_selection: Selection = Selection.KNIGHT
 @onready var pawn: Pawn = %Pawn
 @onready var enemie_ai: EnemyAI = %EnemyAI
 
@@ -41,4 +53,3 @@ func finish_turn() -> void:
 
 func end_game(state: State) -> void:
 	current_state = state
-	game_ended.emit()
