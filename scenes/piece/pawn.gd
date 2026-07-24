@@ -34,6 +34,10 @@ func _process(_delta: float) -> void:
 					current_board_position,
 					is_friendly,
 				)
+				Board.effects_layer.highlight_tiles(
+					possible_moves,
+					Board.effects_layer.Effect.AVALIABLE,
+				)
 				Level.current.current_state = Level.State.MOVEMENT
 				Level.current.update_selection.emit(selection_type[key], SelectionState.SELECTED)
 

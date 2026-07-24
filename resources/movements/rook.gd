@@ -4,7 +4,6 @@ extends Movement
 
 
 static func get_valid_tiles(start_position: Vector2i, is_friendly: bool) -> Array[Vector2i]:
-	Board.effects_layer.clear()
 	var possible_moves_unvalidated := [
 		Vector2i(1, 0),
 		Vector2i(-1, 0),
@@ -18,5 +17,4 @@ static func get_valid_tiles(start_position: Vector2i, is_friendly: bool) -> Arra
 			axis,
 			is_friendly,
 		)
-	Board.effects_layer.highlight_tiles(valid_moves)
 	return valid_moves
