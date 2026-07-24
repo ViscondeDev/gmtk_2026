@@ -19,6 +19,7 @@ func _ready() -> void:
 
 
 func highlight_tiles(tiles: Array[Vector2i], effect: Effect) -> void:
+	print("being highlited",tiles,effect)
 	var time_for_tile = highlight_duration / tiles.size()
 	for tile in tiles:
 		set_cell(tile, 0, effect_tiles[effect])

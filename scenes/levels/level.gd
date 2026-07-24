@@ -40,6 +40,7 @@ func _ready() -> void:
 	current = self
 	state_changed.connect(pawn.watch_game_state)
 	state_changed.connect(enemie_ai.watch_state)
+	update_selection.connect(pawn.get_selection)
 	current_state = State.SELECTION
 
 
@@ -48,6 +49,7 @@ func finish_turn() -> void:
 		State.MOVEMENT:
 			current_state = State.ENEMY
 		State.ENEMY:
+			update_selection.emit(Selection.BISHOP, SelectionState.NONE)
 			current_state = State.SELECTION
 
 

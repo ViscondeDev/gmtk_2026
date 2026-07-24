@@ -23,4 +23,5 @@ script = ExtResource("3_i7cdl")
 body = NodePath("..")
 movement_curve = ExtResource("4_ajk4a")
 tilt_curve = ExtResource("5_mu34b")
+movement_duration = 0.4
 metadata/_custom_type_script = "uid://oeyu1nrn22mj"

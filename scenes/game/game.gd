@@ -3,13 +3,13 @@ extends Node
 signal quit()
 signal update_level(level: int)
 
-
 enum Selection {
 	KNIGHT = 0,
 	BISHOP = 1,
 	ROOK = 2,
 }
 enum SelectionState {
+	DISABLED = 0,
 	SELECTED = 1,
 	NONE = 2,
 }
@@ -22,20 +22,12 @@ enum GameState {
 	LOST = 5,
 }
 
-
 const loading_scene = preload("res://scenes/ui scenes/Loading.tscn")
 @export var level: int = 0
 @onready var loadscreen_instance = loading_scene.instantiate()
-@onready var power_selections: Array[Button] = [
-	%Knight,
-	%Bishop,
-	%Rook,
-]
-@onready var selection_states: Array[SelectionState] = [
-	SelectionState.NONE,
-	SelectionState.NONE,
-	SelectionState.NONE,
-]
+@onready var power_selections: Array[Button] = [%Knight, %Bishop, %Rook]
+
+@onready var world: Node = %World
 
 var loaded_scene: PackedScene = null
 var current_instance: Node = null
@@ -43,13 +35,9 @@ var current_instance: Node = null
 
 func _ready() -> void:
 	_load_level(level)
-	
+
 	for i in range(len(power_selections)):
-		match selection_states[i]:
-			SelectionState.SELECTED:
-				power_selections[i].disabled = false
-			_:
-				power_selections[i].disabled = true
+		power_selections[i].disabled = false
 
 
 func _load_level(to_load: int):
@@ -59,7 +47,7 @@ func _load_level(to_load: int):
 	if current_instance != null:
 		current_instance.queue_free()
 	add_child(loadscreen_instance)
-	
+
 	match to_load:
 		1:
 			loaded_scene = load("res://scenes/levels/level.tscn")
@@ -69,7 +57,7 @@ func _load_level(to_load: int):
 	current_instance.update_selection.connect(_update_selection)
 
 	remove_child(loadscreen_instance)
-	add_child(current_instance)
+	world.add_child(current_instance)
 
 
 func _update_state(new_state: GameState):
@@ -80,15 +68,20 @@ func _update_state(new_state: GameState):
 			_load_level(level)
 
 
-func _update_selection(selection: Selection, state: SelectionState):
-	selection_states[selection] = state
-
+func _update_selection(_selection: Selection, state: SelectionState):
+	print(SelectionState.keys()[state])
 	for i in range(len(power_selections)):
-		match selection_states[i]:
+		match state:
 			SelectionState.SELECTED:
-				power_selections[i].disabled = false
-			_:
 				power_selections[i].disabled = true
+			SelectionState.NONE:
+				power_selections[i].disabled = false
+
+
+func _select(selection: Selection):
+	print(Selection.keys()[selection])
+	Level.current.update_selection.emit(selection, SelectionState.SELECTED)
+
 
 func _on_pause_pressed() -> void:
 	get_tree().paused = true

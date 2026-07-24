@@ -3,10 +3,11 @@ class_name Pawn
 extends Piece
 
 var movement_keys := {
-	"rook": Rook.new(),
-	"bishop": Bishop.new(),
-	"knight": Knight.new(),
+	Selection.ROOK: Rook.new(),
+	Selection.BISHOP: Bishop.new(),
+	Selection.KNIGHT: Knight.new(),
 }
+
 var selection_type := {
 	"rook": Selection.ROOK,
 	"bishop": Selection.BISHOP,
@@ -23,24 +24,12 @@ enum SelectionState {
 	NONE = 2,
 }
 
-func _process(_delta: float) -> void:
-	if Level.current == null:
-		return
-	if Level.current.current_state == Level.State.SELECTION:
-		Board.effects_layer.clear()
-		for key: StringName in movement_keys:
-			Level.current.update_selection.emit(selection_type[key], SelectionState.NONE)
-			if Input.is_action_just_pressed(key):
-				possible_moves = movement_keys[key].get_valid_tiles(
-					current_board_position,
-					is_friendly,
-				)
-				Board.effects_layer.highlight_tiles(
-					possible_moves,
-					Board.effects_layer.Effect.AVALIABLE,
-				)
-				Level.current.current_state = Level.State.MOVEMENT
-				Level.current.update_selection.emit(selection_type[key], SelectionState.SELECTED)
+
+func get_selection(selection: Selection, _state: Variant) -> void:
+	possible_moves = movement_keys[selection].get_valid_tiles(current_board_position, is_friendly)
+	Board.effects_layer.highlight_tiles(possible_moves, Board.effects_layer.Effect.AVALIABLE)
+	Level.current.current_state = Level.State.MOVEMENT
+
 
 func watch_game_state(state: Level.State) -> void:
 	match state:
