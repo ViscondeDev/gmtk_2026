@@ -41,9 +41,10 @@ func attempt_take() -> bool:
 	return false
 
 
+# TODO make so AI prioritizes deffending who's thretened
 func attempt_deffend() -> bool:
 	var reachable_tiles: Dictionary[Vector2i, Array]
-	var best_cell: Vector2i = Board.NULL_CELL
+	var best_cells: Array[Vector2i] = [Board.NULL_CELL]
 	for piece in enemy_pices.values():
 		for tile: Vector2i in piece.possible_moves:
 			if not reachable_tiles.has(tile):
@@ -51,12 +52,13 @@ func attempt_deffend() -> bool:
 			reachable_tiles[tile].append(piece)
 
 			if (
-				best_cell == Board.NULL_CELL
-				or reachable_tiles[tile].size() > reachable_tiles[best_cell].size()
+				best_cells[0] == Board.NULL_CELL
+				or reachable_tiles[tile].size() > reachable_tiles[best_cells[0]].size()
 			):
-				best_cell = tile
-	if best_cell != Board.NULL_CELL:
-		reachable_tiles[best_cell][0].move_to_tile(best_cell)
+				best_cells.push_front(tile)
+	if best_cells[0] != Board.NULL_CELL:
+		print(best_cells)
+		reachable_tiles[best_cells[0]][0].move_to_tile(best_cells[0])
 		return true
 
 	return false
