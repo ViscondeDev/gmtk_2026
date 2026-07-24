@@ -69,7 +69,6 @@ func _update_state(new_state: GameState):
 
 
 func _update_selection(_selection: Selection, state: SelectionState):
-	print(SelectionState.keys()[state])
 	for i in range(len(power_selections)):
 		match state:
 			SelectionState.SELECTED:
@@ -79,7 +78,6 @@ func _update_selection(_selection: Selection, state: SelectionState):
 
 
 func _select(selection: Selection):
-	print(Selection.keys()[selection])
 	Level.current.update_selection.emit(selection, SelectionState.SELECTED)
 
 
