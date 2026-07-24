@@ -39,7 +39,6 @@ const loading_scene = preload("res://scenes/ui scenes/Loading.tscn")
 
 var loaded_scene: PackedScene = null
 var current_instance: Node = null
-var current_selection: Selection = Selection.KNIGHT
 
 
 func _ready() -> void:
